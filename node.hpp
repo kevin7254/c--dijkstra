@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "edge.hpp"
 
 class Node {
 public:
