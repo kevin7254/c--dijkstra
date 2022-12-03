@@ -2,36 +2,39 @@
 #include <vector>
 #include <algorithm>
 
-NodeSet::NodeSet(){
+void NodeSet(){
 }
 
 
 void NodeSet::add(Node* node){
-bool nonDuplicate=true;
-	for(Node* n: nodelist){
-		if(n.getName() == node.getName()){
-		nonDuplicate=false;
+	NodeSet nodeset;
+	bool nonDuplicate=true;
+		for(std::vector<Node*>::const_iterator it=nodeset.nodelist.begin(); it!=nodelist.end(); ++it){
+			Node* n = *it;
+			if(n->getName() == node->getName()){
+			nonDuplicate=false;
+			}
 		}
-	}
-	if(nonDuplicate){
-	nodelist.push_back(node);
-	}
+		if(nonDuplicate){
+		nodelist.push_back(node);
+		}
 
 }
 
 bool NodeSet::isEmpty(){
 	return nodelist.empty();
-
 }
 
-Node* NodeSet::removeMin(){
-	std::sort(nodelist.begin(), nodelist.end(), getName());
-	if(isEmpty()){
-	return nullptr;
-	}else{
-	Node* n = nodelist.back();
-	nodelist.pop_back();
-	return n;
-	}
+bool compareFunction (std::string a, std::string b) {return a<b;} 
 
+Node* NodeSet::removeMin(){
+	std::sort(nodelist.begin(), nodelist.end(), compareFunction);
+
+	if(isEmpty()) {
+		return nullptr;
+	} else {
+		Node* n = nodelist.back();
+		nodelist.pop_back();
+		return n;
+	}
 }
