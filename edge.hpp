@@ -1,5 +1,5 @@
-fndef EDGE_H
-#define EDGE_H
+fndef EDGE_HPP
+#define EDGE_HPP
 
 #include <iostream>
 #include <string>
