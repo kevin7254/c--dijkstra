@@ -29,7 +29,7 @@ test: main
 	./main
 
 # Targets rely on implicit rules for compiling and linking
-main: main.o
+main: main.o edge.o node.o
 
 # Phony targets
 .PHONY: all test clean distclean

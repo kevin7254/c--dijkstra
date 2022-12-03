@@ -4,13 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "edge.hpp"
+class Edge;
 
 class Node {
 public:
     Node() : m_name("default") {}
     Node(const std::string& name) : m_name(name) {}
-    Node() = default;
+    ~Node() {m_name = "default";}
     /** Hämtar nodens namn. */
     std::string getName() const;
 
