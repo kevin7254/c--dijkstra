@@ -21,15 +21,16 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  main
+PROGS = test_graph_small
 
 all: $(PROGS)
 
-test: main
-	./main
+test: test_graph_small
+	./test_graph_small
 
 # Targets rely on implicit rules for compiling and linking
-main: main.o edge.o node.o
+#main: main.o edge.o node.o
+test_graph_small: test_graph_small.o edge.o node.o 
 
 # Phony targets
 .PHONY: all test clean distclean

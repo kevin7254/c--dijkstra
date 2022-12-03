@@ -1,9 +1,10 @@
 #include <iostream>
 #include <cassert>
-#include "graph.h"
 #include <algorithm>
 #include <utility>
 #include <set>
+#include "node.hpp"
+#include "edge.hpp"
 
 using std::cout;
 using std::endl;
@@ -25,10 +26,10 @@ void test_node_and_edge()
     assert(m.getEdges().size() == 0);
 
     auto& p = *n.getEdges().begin();
-    assert(p.getDest()->getName() == "Test2");
+    assert(p.getDestination()->getName() == "Test2");
     assert(p.getLength() == 17);
 
-    p.getDest()->setValue(42);
+    p.getDestination()->setValue(42);
     assert(n.getValue() == Node::max_value);
     assert(m.getValue() == 42);
 
@@ -39,7 +40,7 @@ void print_neighbours(Node* n)
 {
     cout << "Anslutningar från " << n->getName() << "(" << n->getValue() << ") :\n";
     for(auto de : n->getEdges()){
-        cout << de.getLength() << " to " << de.getDest()->getName() << endl;
+        cout << de.getLength() << " to " << de.getDestination()->getName() << endl;
     }
 }
 
@@ -67,7 +68,7 @@ void test_edges()
     std::set<std::pair<std::string,int>> neighbours{{"Veberod",11},{"Torna Hallestad",5}};
     for(auto de : n_dalby.getEdges()){
         auto res = std::find_if(neighbours.begin(), neighbours.end(),
-                [&](const std::pair<std::string,int> &x){return de.getDest()->getName() == x.first;});
+                [&](const std::pair<std::string,int> &x){return de.getDestination()->getName() == x.first;});
         assert(res != neighbours.end());
 #ifdef INFO
         cout << "found " << res->first << endl;

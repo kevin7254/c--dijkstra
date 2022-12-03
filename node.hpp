@@ -8,7 +8,7 @@ class Edge;
 
 class Node {
 public:
-    Node() : m_name("default") {}
+    Node() : m_name{"default"} {}
     Node(const std::string& name) : m_name(name) {}
     ~Node() {m_name = "default";}
     /** Hämtar nodens namn. */
@@ -26,9 +26,11 @@ public:
 
     /** Hämtar de bågar som utgår från denna nod. */
     const std::vector<Edge>& getEdges() const;
+
+    static const int max_value = 1000000;
 private:
     std::string m_name;
-    int m_value;
+    int value;
     std::vector<Edge> m_edges;
 };
 
