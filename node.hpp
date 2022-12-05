@@ -1,7 +1,6 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
-#include <iostream>
 #include <vector>
 #include <string>
 class Edge;
@@ -28,6 +27,16 @@ public:
     const std::vector<Edge>& getEdges() const;
 
     static const int max_value = 1000000;
+
+    Node operator=(const Node& n) {
+        m_name = n.m_name;
+        value = n.value;
+        return *this;
+    }
+
+    bool operator>(const Node& n) {
+        return value > n.value;
+    }
 private:
     std::string m_name;
     int value;

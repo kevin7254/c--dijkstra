@@ -1,4 +1,5 @@
-#include "nodeset.h"
+#include "nodeset.hpp"
+#include "node.hpp"
 #include <cassert>
 #include <iostream>
 
@@ -13,7 +14,9 @@ void test()
     Node c("C");
     c.setValue(30);
 
+
     ns.add(&a);
+
     ns.add(&b);
     ns.add(&c);
 
