@@ -10,7 +10,7 @@ using std::endl;
 
 class Edge{
 public:
-	Edge() :destination{}, length{1}{};
+	Edge() = default;
 	Edge(Node* n, int i) :destination{n}, length{i} {}
 	~Edge() {destination= nullptr, length=0;}
 	Node* getDestination() const {return destination;}

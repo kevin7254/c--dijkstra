@@ -26,10 +26,10 @@ int Node::getValue() const {
 
 void Node::addEdge(Node* n, int i)
 {
-    
+    m_edges.push_back(Edge(n, i));
 }
 
 const std::vector<Edge>& Node::getEdges() const
 {
-    return std::vector<Edge>();
+    return m_edges;
 }

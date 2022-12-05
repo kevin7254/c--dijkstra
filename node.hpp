@@ -9,7 +9,7 @@ class Edge;
 class Node {
 public:
     Node() : m_name{"default"} {}
-    Node(const std::string& name) : m_name(name) {}
+    Node(const std::string& name) : m_name(name), value(max_value) {}
     ~Node() {m_name = "default";}
     /** Hämtar nodens namn. */
     std::string getName() const;
