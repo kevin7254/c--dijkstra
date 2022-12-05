@@ -1,40 +1,51 @@
 #include "nodeset.hpp"
+#include "node.hpp"
+#include "edge.hpp"
 #include <vector>
 #include <algorithm>
 
-void NodeSet(){
+void NodeSet()
+{
 }
 
-
-void NodeSet::add(Node* node){
+void NodeSet::add(Node *node)
+{
 	NodeSet nodeset;
-	bool nonDuplicate=true;
-		for(std::vector<Node*>::const_iterator it=nodeset.nodelist.begin(); it!=nodelist.end(); ++it){
-			Node* n = *it;
-			if(n->getName() == node->getName()){
-			nonDuplicate=false;
-			}
+	bool nonDuplicate = true;
+	for (auto i = nodelist.begin(); i != nodelist.end(); i++)
+	{
+		Node *n = *i;
+		if (n->getName() == node->getName())
+		{
+			nonDuplicate = false;
 		}
-		if(nonDuplicate){
+	}
+	if (nonDuplicate)
+	{
 		nodelist.push_back(node);
-		}
-
+	}
 }
 
-bool NodeSet::isEmpty(){
+bool NodeSet::isEmpty()
+{
 	return nodelist.empty();
 }
 
-bool compareFunction (std::string a, std::string b) {return a<b;} 
+bool compareFunction(Node *a, Node *b) { return *a > *b; }
 
-Node* NodeSet::removeMin(){
+Node *NodeSet::removeMin()
+{
 	std::sort(nodelist.begin(), nodelist.end(), compareFunction);
 
-	if(isEmpty()) {
+	if (isEmpty())
+	{
 		return nullptr;
-	} else {
-		Node* n = nodelist.back();
+	}
+	else
+	{
+		Node *n = nodelist.back();
 		nodelist.pop_back();
+		// cout << n->getName() << endl;
 		return n;
 	}
 }
