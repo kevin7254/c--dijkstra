@@ -5,21 +5,14 @@
 #include "edge.hpp"
 class Dijkstra;
 
+class Dijkstra
+{
+public:
+	Dijkstra() = default;
+	~Dijkstra() {}
+	static void shortestPath(Node *n);
 
-class Dijkstra {
-	public:
-		Dijkstra() = default;
-		Dijkstra(Node* n) : start(n) {}
-		~Dijkstra() {start = nullptr;}	
-		void shortestPath();
-
-
-	private:
-		Node* start;
-	
-
-
-
+private:
 };
 
 #endif

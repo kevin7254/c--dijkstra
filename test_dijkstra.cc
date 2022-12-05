@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
-#include "graph.h"
-#include "dijkstra.h"
+//#include "graph.h"
+#include "dijkstra.hpp"
 
 using std::cout;
 using std::endl;
@@ -24,7 +24,7 @@ void test()
     sandby.addEdge(&flyinge,4);
     hallestad.addEdge(&veberod,8);
 
-    dijkstra(&lund);
+    Dijkstra::shortestPath(&lund);
 
     assert(lund.getValue() == 0);
     assert(dalby.getValue() == 12);
