@@ -8,20 +8,20 @@
 #include <fstream>
 #include "node.hpp"
 
-class Graph{
-	public:
-	Graph() = default;
-	Graph(std::istream s) :in{s} {}
+class Graph
+{
+public:
+	Graph();
+	Graph(std::istream s) {}
 	~Graph() {}
 
-	Node* find(const std::string& find) const;
-	void addNode(const std::string& ss) const;
-	void resetVals();
+	// std::vector<std::unique_ptr<Node>> getVec() const {return vec;}
+	Node *find(const std::string &find) const;
+	void addNode(const std::string &ss);
+	void resetVals() const;
 
-	private:
-		std::vector<std::unique_ptr<Node>> vec;
-		std::istream& in;
+private:
+	std::vector<std::unique_ptr<Node>> vec;
+	//std::istream &in;
 };
 #endif
-
-

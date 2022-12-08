@@ -29,6 +29,7 @@ test: test_graph_small test_nodeset test_dijkstra test_graph_nofile
 	./test_graph_small
 	./test_nodeset
 	./test_dijkstra
+	./test_graph_nofile
 
 # Targets rely on implicit rules for compiling and linking
 #main: main.o edge.o node.o
