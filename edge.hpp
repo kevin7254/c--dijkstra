@@ -5,6 +5,8 @@
 #include <string>
 #include "node.hpp"
 
+class Node;
+
 using std::cout;
 using std::endl;
 

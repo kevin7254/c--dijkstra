@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "edge.hpp"
 class Edge;
 
 class Node {

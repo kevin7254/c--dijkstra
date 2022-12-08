@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "graph.hpp"		
+#include "graph.hpp"
 #include <algorithm>
 #include <utility>
 #include <set>
@@ -12,7 +12,7 @@ void print_neighbours(Node* n)
 {
     cout << "Anslutningar från " << n->getName() << "(" << n->getValue() << ") :\n";
     for(auto de : n->getEdges()){
-        cout << de.getLength() << " to " << de.getDest()->getName() << endl;
+        cout << de.getLength() << " to " << de.getDestination()->getName() << endl;
     }
 }
 
@@ -27,7 +27,7 @@ Node* find_and_test(const std::string& s, Graph& g)
 
 void test_graph()
 {
-    Graph g{};
+    Graph g;
 
     g.addNode("Lund");
     g.addNode("Dalby");
@@ -52,8 +52,8 @@ void test_graph()
     assert(n3->getValue()==42);
 
     g.resetVals();
-    for(auto it = g.begin(); it != g.end(); ++it){
-        assert((*it)->getValue() == Node::max_value);
+    for(auto &it : g.getVector()){
+        assert((it)->getValue() == Node::max_value);
     }
 
 
