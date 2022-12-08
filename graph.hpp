@@ -4,21 +4,24 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
+#include <fstream>
+#include "node.hpp"
 
-Class Graph{
+class Graph{
 	public:
 	Graph() = default;
 	Graph(std::istream s) :in{s} {}
 	~Graph() {}
 
-	Node* find(std::string& find);
-	void addNode(std::string& ss);
-
+	Node* find(const std::string& find) const;
+	void addNode(const std::string& ss) const;
+	void resetVals();
 
 	private:
-		std::vector<std::unique_ptr<Node>>> vec;
+		std::vector<std::unique_ptr<Node>> vec;
 		std::istream& in;
-}
+};
 #endif
 
 

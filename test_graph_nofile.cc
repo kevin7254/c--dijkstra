@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <utility>
 #include <set>
+#include "node.hpp"
+#include "edge.hpp"
 
 using std::cout;
 using std::endl;
@@ -12,7 +14,7 @@ void print_neighbours(Node* n)
 {
     cout << "Anslutningar från " << n->getName() << "(" << n->getValue() << ") :\n";
     for(auto de : n->getEdges()){
-        cout << de.getLength() << " to " << de.getDest()->getName() << endl;
+        cout << de.getLength() << " to " << de.getDestination()->getName() << endl;
     }
 }
 
