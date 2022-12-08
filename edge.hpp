@@ -16,8 +16,8 @@ public:
 	Node* getDestination() const {return destination;}
 	int getLength() const {return length;}
 private:
-Node* destination;
-int length;
+Node* destination = nullptr;
+int length = 0;
 };
 
 #endif
