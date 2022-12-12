@@ -8,9 +8,6 @@
 #include <utility>
 #include <set>
 
-void Node() {
-    int value;
-}
 
 std::string Node::getName() const {
     return m_name;

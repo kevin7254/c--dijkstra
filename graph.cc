@@ -11,26 +11,37 @@ Graph::Graph()
 {
 }
 
-/**
- * Graph::Graph(std::istream s)
+Graph::Graph(std::istream& s)
 {
 
 	std::string temp = "";
-	std::string sub = "";
-	int a = 0;
+	std::string ort1 = "";
+	std::string ort2 = "";
+	int distance = 0;
 	std::size_t pos;
 
-	/**while (std::getline(s, temp))
+	while (std::getline(s, temp))
 	{
 		pos = temp.find(':');
-		sub = temp.substr(0, pos);
-		Node node = std::unique_ptr<Node> (Node{sub});
-		pos = temp.find(' ');
-		a = std::stoi(temp.substr(1, pos));
-		sub = temp.substr(pos + 1, temp.end());
-		node->addEdge(sub, a);
+		ort1 = temp.substr(0, pos);
+		char const* digits = "0123456789";
+		std::size_t const n = temp.find_first_of(digits);
+		if (n != std::string::npos)
+		{
+			std::size_t const m = temp.find_first_not_of(digits, n);
+			if (m != std::string::npos)
+			{
+				ort2 = temp.substr(n, m - n);
+				distance = std::stoi(ort2);
+				ort2 = temp.substr(m, temp.size() - m);
+				addNode(ort1);
+				addNode(ort2);
+				find(ort1)->addEdge(find(ort2), distance);
+				continue;
+			}
+		}
 	}
-} */
+}
 
 
 
@@ -58,4 +69,9 @@ void Graph::resetVals() const
 	{
 		a->setValue(Node::max_value);
 	}
+}
+
+std::vector<std::unique_ptr<Node>> const& Graph::getVec()
+{
+	return vec;
 }

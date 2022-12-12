@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "graph.hpp"		
+#include "graph.hpp"
 #include <algorithm>
 #include <utility>
 #include <set>
@@ -10,17 +10,18 @@
 using std::cout;
 using std::endl;
 
-void print_neighbours(Node* n)
+void print_neighbours(const std::unique_ptr<Node> &n)
 {
     cout << "Anslutningar från " << n->getName() << "(" << n->getValue() << ") :\n";
-    for(auto de : n->getEdges()){
+    for (auto de : n->getEdges())
+    {
         cout << de.getLength() << " to " << de.getDestination()->getName() << endl;
     }
 }
 
-Node* find_and_test(const std::string& s, Graph& g)
+Node *find_and_test(const std::string &s, Graph &g)
 {
-    Node * n = g.find(s);
+    Node *n = g.find(s);
     assert(n != nullptr);
     assert(n->getName() == s);
     assert(n->getValue() == Node::max_value);
@@ -38,6 +39,8 @@ void test_graph()
     g.addNode("Flyinge");
     g.addNode("Veberod");
 
+    g.find("Lund")->addEdge(g.find("Dalby"), 10);
+
     auto n_lund = find_and_test("Lund", g);
     find_and_test("Dalby", g);
     find_and_test("Sodra Sandby", g);
@@ -47,22 +50,25 @@ void test_graph()
 
     n_lund->setValue(17);
     auto n2 = g.find("Lund");
-    assert(n2->getValue()==17);
+    assert(n2->getValue() == 17);
 
     auto n3 = g.find("Flyinge");
     n_flyinge->setValue(42);
-    assert(n3->getValue()==42);
+    assert(n3->getValue() == 42);
+
+    for (auto it = g.getVec().begin(); it != g.getVec().end(); ++it)
+    {
+        print_neighbours(*it);
+    }
 
     g.resetVals();
-    /**
-    for(auto it = g.getVec().begin(); it != g.getVec().end(); ++it){
+    for (auto it = g.getVec().begin(); it != g.getVec().end(); ++it)
+    {
         assert((*it)->getValue() == Node::max_value);
     }
-    */
 
     cout << "test_graph passed" << endl;
 }
-
 
 int main()
 {

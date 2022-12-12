@@ -12,16 +12,15 @@ class Graph
 {
 public:
 	Graph();
-	Graph(std::istream s) {}
+	Graph(std::istream& s);
 	~Graph() {}
 
-	// std::vector<std::unique_ptr<Node>> getVec() const {return vec;}
+	std::vector<std::unique_ptr<Node>> const& getVec();
 	Node *find(const std::string &find) const;
 	void addNode(const std::string &ss);
 	void resetVals() const;
 
 private:
 	std::vector<std::unique_ptr<Node>> vec;
-	//std::istream &in;
 };
 #endif
