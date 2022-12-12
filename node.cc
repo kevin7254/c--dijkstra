@@ -8,7 +8,6 @@
 #include <utility>
 #include <set>
 
-
 std::string Node::getName() const {
     return m_name;
 }
@@ -19,6 +18,15 @@ void Node::setValue(int v) {
 
 int Node::getValue() const {
     return value;
+}
+
+void Node::setParent(Node* p){
+	parent = p;
+}
+
+Node* Node::getParent()const{
+	return parent;
+
 }
 
 void Node::addEdge(Node* n, int i)

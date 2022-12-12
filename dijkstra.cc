@@ -3,13 +3,15 @@
 #include "nodeset.hpp"
 #include "dijkstra.hpp"
 #include <limits>
+#include <iostream>
 
 void Dijkstra()
 {
 }
 
-void Dijkstra::shortestPath(Node* start)
+void Dijkstra::shortestPath(Node *start)
 {
+
 	start->setValue(0);
 	NodeSet s;
 	s.add(start);
@@ -19,10 +21,11 @@ void Dijkstra::shortestPath(Node* start)
 		for (Edge e : n->getEdges())
 		{
 			int l = e.getLength();
-			Node* d = e.getDestination();
+			Node *d = e.getDestination();
 			int a = n->getValue() + l;
 			if (a < d->getValue())
 			{
+				d->setParent(n);
 				d->setValue(a);
 				s.add(d);
 			}

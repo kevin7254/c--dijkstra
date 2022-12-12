@@ -71,6 +71,17 @@ void Graph::resetVals() const
 	}
 }
 
+void Graph::printPath(const std::string& dest){
+	Node* n =find(dest);
+	std::cout << "i print " << n->getName() << std::endl;
+	while(n->getParent() != nullptr){
+		std::cout << n->getName() << std::endl;
+		n = n->getParent();
+		
+
+	}
+
+}
 std::vector<std::unique_ptr<Node>> const& Graph::getVec()
 {
 	return vec;
