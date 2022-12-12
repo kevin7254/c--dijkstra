@@ -52,6 +52,8 @@ void test_graph()
     auto n3 = g.find("Flyinge");
     n_flyinge->setValue(42);
     assert(n3->getValue()==42);
+	
+	g.printPath("Veberod");
 
     g.resetVals();
     /**

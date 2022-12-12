@@ -18,6 +18,15 @@ public:
 
     /** Hämtar nodens värde. */
     int getValue() const;
+    
+    /** Sätter parent till p. */
+    void setParent(Node* p);
+	
+
+    /** Hämtar nodens parent. */
+   Node* getParent() const;
+
+
 
     /** Lägger till en ny båge från denna nod till en given destination.
      * Bågen ska ha längden length. */
@@ -39,7 +48,8 @@ public:
     }
 private:
     std::string m_name;
-    int value;
+    int value = max_value;
+    Node* parent = nullptr;
     std::vector<Edge> m_edges;
 };
 

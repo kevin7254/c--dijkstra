@@ -59,3 +59,15 @@ void Graph::resetVals() const
 		a->setValue(Node::max_value);
 	}
 }
+
+void Graph::printPath(const std::string& dest){
+	Node* n =find(dest);
+	std::cout << "i print " << n->getName() << std::endl;
+	while(n->getParent() != nullptr){
+		std::cout << n->getName() << std::endl;
+		n = n->getParent();
+		
+
+	}
+
+}
