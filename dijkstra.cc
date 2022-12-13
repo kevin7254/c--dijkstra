@@ -9,13 +9,12 @@ void Dijkstra()
 {
 }
 
-void Dijkstra::shortestPath(Node *start)
+void Dijkstra::shortestPathOld(Node *start)
 {
-
 	start->setValue(0);
 	NodeSet s;
 	s.add(start);
-	while (s.isEmpty() != true)
+	while (!s.isEmpty())
 	{
 		Node *n = s.removeMin();
 		for (Edge e : n->getEdges())
@@ -26,7 +25,33 @@ void Dijkstra::shortestPath(Node *start)
 			if (a < d->getValue())
 			{
 				d->setParent(n);
+				cout << d->getName() << " dfjjbf " << d->getParent()->getName() << endl;
 				d->setValue(a);
+				s.add(d);
+			}
+		}
+	}
+	cout << s.isEmpty() << endl;
+}
+
+
+void Dijkstra::shortestPath(Node* start, int (*f)(Node*, Edge*))
+{
+	start->setValue(0);
+	NodeSet s;
+	s.add(start);
+	while (!s.isEmpty())
+	{
+		Node *n = s.removeMin();
+		for (Edge e : n->getEdges())
+		{
+			int a = f(n, &e);
+			Node *d = e.getDestination();
+			if (a < d->getValue())
+			{
+				d->setValue(a);
+				d->setParent(n);
+				cout << d->getName() << " dfjjbf " << d->getParent()->getName() << endl;
 				s.add(d);
 			}
 		}

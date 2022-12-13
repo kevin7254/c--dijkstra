@@ -8,6 +8,7 @@ class Edge;
 class Node {
 public:
     Node() : m_name{"default"} {}
+    Node(const Node& n) : m_name(n.m_name), value(n.value) {}
     Node(const std::string& name) : m_name(name), value(max_value) {}
     ~Node() {m_name = "default";}
     /** Hämtar nodens namn. */
@@ -25,8 +26,6 @@ public:
 
     /** Hämtar nodens parent. */
    Node* getParent() const;
-
-
 
     /** Lägger till en ny båge från denna nod till en given destination.
      * Bågen ska ha längden length. */
@@ -47,10 +46,10 @@ public:
         return value > n.value;
     }
 private:
-    std::string m_name;
+    std::string m_name = "default";
     int value = max_value;
     Node* parent = nullptr;
-    std::vector<Edge> m_edges;
+    std::vector<Edge> m_edges = {};
 };
 
 #endif
