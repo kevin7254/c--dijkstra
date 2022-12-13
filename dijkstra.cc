@@ -54,6 +54,10 @@ void Dijkstra::printPath(Node *node)
 			  << allNodes << org_node->getValue() << std::endl << "\n";
 }
 
+
+/**
+ * En generell Dijkstra-algoritm som tar en funktion som parameter.
+*/
 void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge&))
 {
 	start->setValue(0);
