@@ -10,13 +10,12 @@ void Dijkstra()
 {
 }
 
-void Dijkstra::shortestPath(Node *start)
+void Dijkstra::shortestPathOld(Node *start)
 {
-
 	start->setValue(0);
 	NodeSet s;
 	s.add(start);
-	while (s.isEmpty() != true)
+	while (!s.isEmpty())
 	{
 		Node *n = s.removeMin();
 		for (Edge e : n->getEdges())
@@ -27,29 +26,55 @@ void Dijkstra::shortestPath(Node *start)
 			if (a < d->getValue())
 			{
 				d->setParent(n);
+				cout << d->getName() << " dfjjbf " << d->getParent()->getName() << endl;
 				d->setValue(a);
 				s.add(d);
 			}
 		}
 	}
+	cout << s.isEmpty() << endl;
 }
 
-
-void Dijkstra::printPath(Node* node){
-	std::vector<Node*> v {};
-	Node* org_node = node;
+void Dijkstra::printPath(Node *node)
+{
+	std::vector<Node *> v{};
+	Node *org_node = node;
 	std::string allNodes;
-	while(node->getParent() != nullptr){
+	while (node->getParent() != nullptr)
+	{
 		v.push_back(node);
 		node = node->getParent();
 	}
 	reverse(v.begin(), v.end());
 
-	for(auto n : v){
+	for (auto n : v)
+	{
 		allNodes.append(n->getName() + "\n");
 	}
 
-	std::cout << "Result for " << org_node->getName() << "\n" << allNodes << org_node->getValue() <<  std::endl;
+	std::cout << "Result for " << org_node->getName() << "\n"
+			  << allNodes << org_node->getValue() << std::endl;
+}
 
-
+void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge *))
+{
+	start->setValue(0);
+	NodeSet s;
+	s.add(start);
+	while (!s.isEmpty())
+	{
+		Node *n = s.removeMin();
+		for (Edge e : n->getEdges())
+		{
+			int a = f(n, &e);
+			Node *d = e.getDestination();
+			if (a < d->getValue())
+			{
+				d->setValue(a);
+				d->setParent(n);
+				cout << d->getName() << " dfjjbf " << d->getParent()->getName() << endl;
+				s.add(d);
+			}
+		}
+	}
 }

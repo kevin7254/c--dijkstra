@@ -51,7 +51,8 @@ Node* Graph::find(const std::string &s) const
 	{
 		if (a->getName() == s)
 		{
-			return a.get();
+			cout << a->getParent() << endl;
+			return std::move(a.get());
 		}
 	}
 	return nullptr;
@@ -74,6 +75,7 @@ void Graph::resetVals() const
 void Graph::printPath(const std::string& dest){
 	Node* n =find(dest);
 	std::cout << "i print " << n->getName() << std::endl;
+	std::cout << "i print " << n->getValue() << std::endl;
 	while(n->getParent() != nullptr){
 		std::cout << n->getName() << std::endl;
 		n = n->getParent();

@@ -6,6 +6,7 @@
 #include <set>
 #include "node.hpp"
 #include "edge.hpp"
+#include "dijkstra.hpp"
 #include <fstream>
 
 using std::cout;
@@ -42,6 +43,9 @@ void test_graph()
         print_neighbours(g.find("Lund"));
         print_neighbours(g.find("Dalby"));
         print_neighbours(g.find("Sodra Sandby"));
+
+        Dijkstra::shortestPath<Node>(g.find("Lund"));
+        g.printPath("Lund");
     }
 
     file.close();
