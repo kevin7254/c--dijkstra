@@ -11,6 +11,7 @@ public:
 	Dijkstra() = default;
 	~Dijkstra() {}
 	static void shortestPath(Node *n);
+	static void printPath(Node* node);
 private:
 
 };
