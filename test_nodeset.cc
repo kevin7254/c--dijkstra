@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include "nodeset.hpp"
 #include "node.hpp"
 #include <cassert>
@@ -13,7 +16,6 @@ void test()
     b.setValue(20);
     Node c("C");
     c.setValue(30);
-
 
     ns.add(&a);
 

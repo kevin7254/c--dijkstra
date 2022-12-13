@@ -1,6 +1,8 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include <iostream>
 #include <cassert>
-//#include "graph.h"
 #include "dijkstra.hpp"
 
 using std::cout;
@@ -15,14 +17,14 @@ void test()
     Node flyinge{"Flyinge"};
     Node veberod{"Veberod"};
 
-    lund.addEdge(&dalby,12);
-    lund.addEdge(&sandby,12);
-    dalby.addEdge(&sandby,12);
-    dalby.addEdge(&veberod,11);
-    dalby.addEdge(&hallestad,5);
-    sandby.addEdge(&lund,12);
-    sandby.addEdge(&flyinge,4);
-    hallestad.addEdge(&veberod,8);
+    lund.addEdge(&dalby, 12);
+    lund.addEdge(&sandby, 12);
+    dalby.addEdge(&sandby, 12);
+    dalby.addEdge(&veberod, 11);
+    dalby.addEdge(&hallestad, 5);
+    sandby.addEdge(&lund, 12);
+    sandby.addEdge(&flyinge, 4);
+    hallestad.addEdge(&veberod, 8);
 
     Dijkstra::shortestPathOld(&lund);
 
@@ -33,18 +35,17 @@ void test()
     assert(veberod.getValue() == 23);
     assert(flyinge.getValue() == 16);
 
-
 #ifdef INFO
     cout << "----\nAll distances from Lund:\n";
 
-    for(auto& t : {lund, dalby, sandby, hallestad, veberod, flyinge}) {
+    for (auto &t : {lund, dalby, sandby, hallestad, veberod, flyinge})
+    {
         cout << t.getName() << " : " << t.getValue() << " ";
         cout << endl;
     }
 #endif
     cout << "test_dijkstra passed" << endl;
 }
-
 
 int main()
 {

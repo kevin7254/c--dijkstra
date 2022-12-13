@@ -1,3 +1,5 @@
+# Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+
 # Define the compiler and the linker. The linker must be defined since
 # the implicit rule for linking uses CC as the linker. g++ can be
 # changed to clang++.

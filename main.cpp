@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -9,13 +12,13 @@
 
 using namespace std;
 
-int passedNodes(Node*, Edge&);
-int countedChars(Node*, Edge&);
+int passedNodes(Node *, Edge &);
+int countedChars(Node *, Edge &);
 
 int main()
 {
-    cout << "Hello Dijkstra fan!" << endl << endl;
-
+    cout << "Hello Dijkstra fan!" << endl
+         << endl;
 
     Graph g{};
 
@@ -40,58 +43,49 @@ int main()
     g.find("Qatar")->addEdge(g.find("Denmark"), 30);
     g.find("Qatar")->addEdge(g.find("Atlantis"), 20);
 
-   g.find("Atlantis")->addEdge(g.find("Qatar"), 20);
-   
+    g.find("Atlantis")->addEdge(g.find("Qatar"), 20);
 
-   Dijkstra::shortestPathOld(g.find("Sweden"));
-   Dijkstra::printPath(g.find("Qatar"));
-   assert(g.find("Qatar")->getValue() == 25);
+    Dijkstra::shortestPathOld(g.find("Sweden"));
+    Dijkstra::printPath(g.find("Qatar"));
+    assert(g.find("Qatar")->getValue() == 25);
 
-   Dijkstra::printPath(g.find("Russia"));
-   assert(g.find("Russia")->getValue() == 15);
+    Dijkstra::printPath(g.find("Russia"));
+    assert(g.find("Russia")->getValue() == 15);
 
- 
-   g.resetVals();
+    g.resetVals();
 
-	
+    Dijkstra::shortestPath(g.find("Sweden"), passedNodes);
+    Dijkstra::printPath(g.find("Denmark"));
 
-   Dijkstra::shortestPath(g.find("Sweden"), passedNodes);
-   Dijkstra::printPath(g.find("Denmark"));
+    g.resetVals();
 
-
-   g.resetVals();
-
-   Dijkstra::shortestPath(g.find("Sweden"), countedChars);
-   Dijkstra::printPath(g.find("Atlantis"));
-
+    Dijkstra::shortestPath(g.find("Sweden"), countedChars);
+    Dijkstra::printPath(g.find("Atlantis"));
 }
 /* Räknar upp antalet noder passerade i grafen*/
-int passedNodes(Node* node, Edge& e){
-	
-	int count =1;
-	while(node->getParent() != nullptr){
-		++count;
-		node= node->getParent();
-	}
-	return count;
+int passedNodes(Node *node, Edge &e)
+{
+
+    int count = 1;
+    while (node->getParent() != nullptr)
+    {
+        ++count;
+        node = node->getParent();
+    }
+    return count;
 }
 /* Räknar upp antalet tecken för varje nod i grafen
  * som man har passerat*/
-int countedChars(Node* node, Edge& e){
+int countedChars(Node *node, Edge &e)
+{
 
-	int count = 0;
-	while(node->getParent() != nullptr){
-		count += node->getName().length();
-		node = node->getParent();
-	}
-		count += e.getDestination()->getName().length();	
+    int count = 0;
+    while (node->getParent() != nullptr)
+    {
+        count += node->getName().length();
+        node = node->getParent();
+    }
+    count += e.getDestination()->getName().length();
 
-	return count;
-
-
+    return count;
 }
-
-
-
-
-

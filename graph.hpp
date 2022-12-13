@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 
@@ -12,10 +15,10 @@ class Graph
 {
 public:
 	Graph();
-	Graph(std::istream& s);
+	Graph(std::istream &s);
 	~Graph() {}
 
-	std::vector<std::unique_ptr<Node>> const& getVec();
+	std::vector<std::unique_ptr<Node>> const &getVec();
 	Node *find(const std::string &find) const;
 	void addNode(const std::string &ss);
 	void resetVals() const;

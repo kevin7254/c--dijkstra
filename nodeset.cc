@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include "nodeset.hpp"
 #include "node.hpp"
 #include "edge.hpp"

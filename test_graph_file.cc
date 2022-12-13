@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include <iostream>
 #include <cassert>
 #include "graph.hpp"
@@ -12,7 +15,7 @@
 using std::cout;
 using std::endl;
 
-void print_neighbours(Node* n)
+void print_neighbours(Node *n)
 {
     cout << "Anslutningar från " << n->getName() << "(" << n->getValue() << ") :\n";
     for (auto de : n->getEdges())

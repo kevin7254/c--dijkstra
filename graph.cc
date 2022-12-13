@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include "graph.hpp"
 #include "node.hpp"
 #include "edge.hpp"
@@ -11,7 +14,7 @@ Graph::Graph()
 {
 }
 /* Skapar en Graf med noder och bågar som läses in från en inström referens s */
-Graph::Graph(std::istream& s)
+Graph::Graph(std::istream &s)
 {
 
 	std::string temp = "";
@@ -24,7 +27,7 @@ Graph::Graph(std::istream& s)
 	{
 		pos = temp.find(':');
 		ort1 = temp.substr(0, pos);
-		char const* digits = "0123456789";
+		char const *digits = "0123456789";
 		std::size_t const n = temp.find_first_of(digits);
 		if (n != std::string::npos)
 		{
@@ -43,11 +46,10 @@ Graph::Graph(std::istream& s)
 	}
 }
 
-
 /* Hittar en nod i grafen med namnet s*/
-Node* Graph::find(const std::string &s) const
+Node *Graph::find(const std::string &s) const
 {
-	for (auto& a : vec)
+	for (auto &a : vec)
 	{
 		if (a->getName() == s)
 		{
@@ -58,9 +60,9 @@ Node* Graph::find(const std::string &s) const
 }
 
 /* Lägger till en nod i grafen, genom vektorn vec, med namnet name*/
-void Graph::addNode(const std::string& name)
+void Graph::addNode(const std::string &name)
 {
-	std::unique_ptr<Node> node (new Node{name});
+	std::unique_ptr<Node> node(new Node{name});
 	vec.push_back(std::move(node));
 }
 
@@ -73,7 +75,7 @@ void Graph::resetVals() const
 	}
 }
 /* Returnerar vektorn vec som lagrar alla noder*/
-std::vector<std::unique_ptr<Node>> const& Graph::getVec()
+std::vector<std::unique_ptr<Node>> const &Graph::getVec()
 {
 	return vec;
 }

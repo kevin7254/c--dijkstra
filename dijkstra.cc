@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include "edge.hpp"
 #include "node.hpp"
 #include "nodeset.hpp"
@@ -6,7 +9,7 @@
 #include <iostream>
 #include <algorithm>
 
-/* Dijkstras algoritm i ett nät av noder genom dess 
+/* Dijkstras algoritm i ett nät av noder genom dess
  * bågar, med startnoden start*/
 void Dijkstra::shortestPathOld(Node *start)
 {
@@ -30,8 +33,8 @@ void Dijkstra::shortestPathOld(Node *start)
 		}
 	}
 }
-/* Printar ut namnet på noderna i den kortaste vägen 
- * baserat på dess värde. Vägen ska vara den kostaste vägen 
+/* Printar ut namnet på noderna i den kortaste vägen
+ * baserat på dess värde. Vägen ska vara den kostaste vägen
  * till destinationsnoden node*/
 void Dijkstra::printPath(Node *node)
 {
@@ -50,15 +53,15 @@ void Dijkstra::printPath(Node *node)
 		allNodes.append(n->getName() + " ");
 	}
 
-	std::cout << "Result for " << org_node->getName() << ": " 
-			  << allNodes << org_node->getValue() << std::endl << "\n";
+	std::cout << "Result for " << org_node->getName() << ": "
+			  << allNodes << org_node->getValue() << std::endl
+			  << "\n";
 }
-
 
 /**
  * En generell Dijkstra-algoritm som tar en funktion som parameter.
-*/
-void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge&))
+ */
+void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge &))
 {
 	start->setValue(0);
 	NodeSet s;

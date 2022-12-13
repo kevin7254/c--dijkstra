@@ -1,3 +1,6 @@
+/**
+ * Made by Viktor Eriksson vi2476er-s and Kevin Nilsson ke6880ni-s
+ */
 #include <iostream>
 #include <cassert>
 #include "graph.hpp"
@@ -54,9 +57,9 @@ void test_graph()
 
     auto n3 = g.find("Flyinge");
     n_flyinge->setValue(42);
-    assert(n3->getValue()==42);
-	
-	//g.printPath("Veberod");
+    assert(n3->getValue() == 42);
+
+    // g.printPath("Veberod");
 
     g.resetVals();
     for (auto it = g.getVec().begin(); it != g.getVec().end(); ++it)
