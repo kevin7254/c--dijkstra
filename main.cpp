@@ -9,9 +9,12 @@
 
 using namespace std;
 
+int passedNodes(Node*, Edge&);
+int countedChars(Node*, Edge&);
+
 int main()
 {
-    cout << "Hello Dijkstra fan!" << endl;
+    cout << "Hello Dijkstra fan!" << endl << endl;
 
 
     Graph g{};
@@ -39,6 +42,7 @@ int main()
 
    g.find("Atlantis")->addEdge(g.find("Qatar"), 20);
    
+
    Dijkstra::shortestPathOld(g.find("Sweden"));
    Dijkstra::printPath(g.find("Qatar"));
    assert(g.find("Qatar")->getValue() == 25);
@@ -46,8 +50,48 @@ int main()
    Dijkstra::printPath(g.find("Russia"));
    assert(g.find("Russia")->getValue() == 15);
 
+ 
    g.resetVals();
 
+	
+
+   Dijkstra::shortestPath(g.find("Sweden"), passedNodes);
+   Dijkstra::printPath(g.find("Denmark"));
+
+
+   g.resetVals();
+
+   Dijkstra::shortestPath(g.find("Sweden"), countedChars);
+   Dijkstra::printPath(g.find("Atlantis"));
+
+}
+/* Räknar upp antalet noder passerade i grafen*/
+int passedNodes(Node* node, Edge& e){
+	
+	int count =1;
+	while(node->getParent() != nullptr){
+		++count;
+		node= node->getParent();
+	}
+	return count;
+}
+/* Räknar upp antalet tecken för varje nod i grafen
+ * som man har passerat*/
+int countedChars(Node* node, Edge& e){
+
+	int count = 0;
+	while(node->getParent() != nullptr){
+		count += node->getName().length();
+		node = node->getParent();
+	}
+		count += e.getDestination()->getName().length();	
+
+	return count;
 
 
 }
+
+
+
+
+

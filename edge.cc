@@ -8,6 +8,7 @@
 #include <utility>
 #include <set>
 
+/* Skapar en Edge med till node destination med längden length*/
 void Edge() {
     Node* destination;
     int length;

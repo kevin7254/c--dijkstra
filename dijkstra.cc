@@ -6,10 +6,8 @@
 #include <iostream>
 #include <algorithm>
 
-void Dijkstra()
-{
-}
-
+/* Dijkstras algoritm i ett nät av noder genom dess 
+ * bågar, med startnoden start*/
 void Dijkstra::shortestPathOld(Node *start)
 {
 	start->setValue(0);
@@ -32,7 +30,9 @@ void Dijkstra::shortestPathOld(Node *start)
 		}
 	}
 }
-
+/* Printar ut namnet på noderna i den kortaste vägen 
+ * baserat på dess värde. Vägen ska vara den kostaste vägen 
+ * till destinationsnoden node*/
 void Dijkstra::printPath(Node *node)
 {
 	std::vector<Node *> v{};
@@ -47,14 +47,14 @@ void Dijkstra::printPath(Node *node)
 
 	for (auto n : v)
 	{
-		allNodes.append(n->getName() + "\n");
+		allNodes.append(n->getName() + " ");
 	}
 
-	std::cout << "Result for " << org_node->getName() << "\n"
-			  << allNodes << org_node->getValue() << std::endl;
+	std::cout << "Result for " << org_node->getName() << ": " 
+			  << allNodes << org_node->getValue() << std::endl << "\n";
 }
 
-void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge *))
+void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge&))
 {
 	start->setValue(0);
 	NodeSet s;
@@ -64,7 +64,7 @@ void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge *))
 		Node *n = s.removeMin();
 		for (Edge e : n->getEdges())
 		{
-			int a = f(n, &e);
+			int a = f(n, e);
 			Node *d = e.getDestination();
 			if (a < d->getValue())
 			{

@@ -10,7 +10,7 @@
 Graph::Graph()
 {
 }
-
+/* Skapar en Graf med noder och bågar som läses in från en inström referens s */
 Graph::Graph(std::istream& s)
 {
 
@@ -44,7 +44,7 @@ Graph::Graph(std::istream& s)
 }
 
 
-
+/* Hittar en nod i grafen med namnet s*/
 Node* Graph::find(const std::string &s) const
 {
 	for (auto& a : vec)
@@ -57,12 +57,14 @@ Node* Graph::find(const std::string &s) const
 	return nullptr;
 }
 
-void Graph::addNode(const std::string& ss)
+/* Lägger till en nod i grafen, genom vektorn vec, med namnet name*/
+void Graph::addNode(const std::string& name)
 {
-	std::unique_ptr<Node> node (new Node{ss});
+	std::unique_ptr<Node> node (new Node{name});
 	vec.push_back(std::move(node));
 }
 
+/* nollställer alla noder i grafen till Node::max_value*/
 void Graph::resetVals() const
 {
 	for (auto &a : vec)
@@ -70,7 +72,7 @@ void Graph::resetVals() const
 		a->setValue(Node::max_value);
 	}
 }
-
+/* Returnerar vektorn vec som lagrar alla noder*/
 std::vector<std::unique_ptr<Node>> const& Graph::getVec()
 {
 	return vec;
