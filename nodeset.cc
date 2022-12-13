@@ -4,10 +4,6 @@
 #include <vector>
 #include <algorithm>
 
-void NodeSet()
-{
-}
-
 void NodeSet::add(Node *node)
 {
 	NodeSet nodeset;
