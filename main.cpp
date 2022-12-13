@@ -39,7 +39,7 @@ int main()
 
    g.find("Atlantis")->addEdge(g.find("Qatar"), 20);
    
-   Dijkstra::shortestPath(g.find("Sweden"));
+   Dijkstra::shortestPathOld(g.find("Sweden"));
    Dijkstra::printPath(g.find("Qatar"));
    assert(g.find("Qatar")->getValue() == 25);
 

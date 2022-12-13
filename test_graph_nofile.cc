@@ -56,7 +56,7 @@ void test_graph()
     n_flyinge->setValue(42);
     assert(n3->getValue()==42);
 	
-	g.printPath("Veberod");
+	//g.printPath("Veberod");
 
     g.resetVals();
     for (auto it = g.getVec().begin(); it != g.getVec().end(); ++it)

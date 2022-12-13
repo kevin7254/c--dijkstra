@@ -12,7 +12,6 @@ class Graph
 {
 public:
 	Graph();
-	Graph(const Graph& g) : vec(g.vec) {}
 	Graph(std::istream& s);
 	~Graph() {}
 
@@ -20,9 +19,8 @@ public:
 	Node *find(const std::string &find) const;
 	void addNode(const std::string &ss);
 	void resetVals() const;
-	void printPath(const std::string&sss);
 
 private:
-	std::vector<std::unique_ptr<Node>> vec = {};
+	std::vector<std::unique_ptr<Node>> vec;
 };
 #endif

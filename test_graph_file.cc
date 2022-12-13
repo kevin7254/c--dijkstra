@@ -44,8 +44,8 @@ void test_graph()
         print_neighbours(g.find("Dalby"));
         print_neighbours(g.find("Sodra Sandby"));
 
-        Dijkstra::shortestPath<Node>(g.find("Lund"));
-        g.printPath("Lund");
+        //Dijkstra::shortestPath<Node>(g.find("Lund"));
+        //g.printPath("Lund");
     }
 
     file.close();

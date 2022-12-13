@@ -26,13 +26,11 @@ void Dijkstra::shortestPathOld(Node *start)
 			if (a < d->getValue())
 			{
 				d->setParent(n);
-				cout << d->getName() << " dfjjbf " << d->getParent()->getName() << endl;
 				d->setValue(a);
 				s.add(d);
 			}
 		}
 	}
-	cout << s.isEmpty() << endl;
 }
 
 void Dijkstra::printPath(Node *node)
@@ -72,7 +70,6 @@ void Dijkstra::shortestPath(Node *start, int (*f)(Node *, Edge *))
 			{
 				d->setValue(a);
 				d->setParent(n);
-				cout << d->getName() << " dfjjbf " << d->getParent()->getName() << endl;
 				s.add(d);
 			}
 		}
